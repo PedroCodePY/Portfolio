@@ -1,0 +1,126 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  height: 75px;
+  position: relative;
+  z-index: 10;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+}
+
+/* Nav links default desktop */
+.nav-links-container {
+  display: flex;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.darkmode-btn {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: large;
+}
+
+.darkmode-btn:hover {
+  color: none;
+}
+
+/* Hamburger styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 25px;
+  height: 20px;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 8px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -8px);
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 425px) {
+  .nav-links-container {
+    position: fixed;
+    align-items: center;
+    top: 60px;
+    padding-right: 30px;
+    right: 0;
+    background-color: #353535;
+    height: calc(100vh - 60px);
+    width: 150px;
+    flex-direction: column;
+    padding-top: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .nav-links-container.active {
+    transform: translateX(0);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+}
+
+.Logo{
+  width: 75px;
+  height: 75px;
+}
