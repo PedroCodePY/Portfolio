@@ -16,7 +16,7 @@ export default function Navbar() {
   const handleLinkClick = () => setMenuOpen(false);
 
   return (
-    <nav className="navbar" style={{display: 'flex', justifyContent: 'space-between', alignContent: 'center', padding: '0', backgroundColor: darkMode ? '#333' : '#fff'}}>
+    <nav className="navbar" style={{display: 'flex', justifyContent: 'space-between', alignContent: 'center', padding: '0', backgroundColor: darkMode ? '#333' : '#333'}}>
       <div className="logo" style={{width: '75px', height: '75px'}}>
         <img src="/Logo2.svg" alt="" className='Logo'/>
       </div>

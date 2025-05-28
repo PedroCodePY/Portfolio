@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useEffect } from "react";
 import emailjs from "emailjs-com";
 import ReCAPTCHA from "react-google-recaptcha";
 import Navbar from "../components/Navbar";
@@ -6,6 +7,8 @@ import "../components/Navbar.css";
 import "./Home.css";
 import "@google/model-viewer";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; 
 
 const skillData = {
   Frontend: ["html.png", "css-3.png", "javascript.png", "bootstrap.png"],
@@ -127,6 +130,26 @@ const Home = () => {
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [sending, setSending] = useState(false);
   const formRef = useRef();
+  const robotRef = useRef();
+
+  useEffect(() => {
+    const model = robotRef.current;
+    if (!model) return;
+
+    const handleMouseMove = (e) => {
+      const t = (e.clientX / window.innerWidth) * 2 - 1;
+      const d = (e.clientY / window.innerHeight) * 2 - 1;
+      const r = -(30 * t);
+      const i = -(10 * d) + 90;
+      model.cameraOrbit = `${r}deg ${i}deg 5m`;
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -175,9 +198,28 @@ const Home = () => {
             >
               Contact Me
             </button>
+            <br />
+            <div className="linkContainer">
+              <a href="https://www.linkedin.com/in/pedro-tampubolon-9901b5359/">
+                <div className="link">
+                  <img src="/linkedin.png" alt="linkedin logo" className="linkImage"/>
+                </div>
+              </a>
+              <a href="https://www.github.com/PedroCodePY">
+                <div className="link">
+                  <img src="/github.png" alt="github logo" className="linkImage"/>
+                </div>
+              </a>
+              <a href="https://www.instagram.com/pedrotampuboloncoder">
+                <div className="link">
+                  <img src="/instagram.png" alt="instagram logo" className="linkImage"/>
+                </div>
+              </a>
+            </div>
           </div>
           <div className="bot1">
             <model-viewer
+              ref={robotRef}
               className="robot1"
               src="/Robot.glb"
               alt="3D Robot Mascot"
@@ -243,10 +285,21 @@ const Home = () => {
 
       <section id="achievements">
         <h2 className="section-title">Achievements</h2>
-        <div className="achievement-container">
+        <Carousel
+          showArrows={true}
+          autoPlay={true}
+          infiniteLoop={true}
+          showThumbs={false}
+          showStatus={false}
+          showIndicators={false}
+          transitionTime={500}
+          stopOnHover={true}
+          swipeable={true}
+          interval={4000}
+        >
           {achievements.map((item, index) => (
-            <div key={index} className="achievement-card">
-              <h3>{item.title}</h3>
+            <div key={index} className="achievement-slide">
+              <h4>{item.title}</h4>
               <p><strong>Tanggal:</strong> {item.date}</p>
               <p><strong>Skor/Status:</strong> {item.score}</p>
               <p><strong>Penyelenggara:</strong> {item.organizer}</p>
@@ -262,7 +315,7 @@ const Home = () => {
               )}
             </div>
           ))}
-        </div>
+        </Carousel>
       </section>
 
       <section id="projects" className="projects-section">
@@ -293,7 +346,6 @@ const Home = () => {
             className="robot3"
             src="/Robot.glb"
             alt="3D Robot Mascot"
-            auto-rotate
             camera-controls
             disable-zoom
             interaction-prompt="none"
@@ -322,6 +374,7 @@ const Home = () => {
             </div>
 
             <ReCAPTCHA
+              className="g-recaptcha"
               sitekey="6LdnvkcrAAAAABVaJpaF0UbatENRjsSGnCro494X"
               onChange={() => setCaptchaVerified(true)}
               onExpired={() => setCaptchaVerified(false)}

@@ -22,3 +22,20 @@ body {
   font-family: sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+@keyframes moveup {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}
+
+.bot3 {
+  width: 200px;
+  height: 200px;
+  animation: moveup 2s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
