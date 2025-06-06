@@ -779,8 +779,14 @@ footer {
   background-color: #414141;
   color: white;
   text-align: center;
-  padding: 12px;
+  padding: 0;
   position: relative;
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
 }
 
 .link img {
