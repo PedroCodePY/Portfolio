@@ -14,7 +14,7 @@ const skillData = {
   Frontend: ["html.png", "css-3.png", "javascript.png", "bootstrap.png"],
   Backend: ["php.png", "python.png", "mysql.png"],
   Server: ["docker.webp", "nginx.png", "apache.png", "debian.png", "ubuntu.png", "proxmox.png", "casaos.png"],
-  Ethical_Hacking: [],
+  Ethical_Hacking: ["kali-linux.png"],
   Design: ["figma.png", "canva.png"],
   Other: ["github.png", "VSCode.png", "anaconda.png"],
 };
@@ -99,12 +99,17 @@ const achievements = [
   }
 ];
 
+const projectsTech = {
+  Sakumon: ["python.png"]
+}
+
 const projects = [
   {
-    title: 'Sakumon (Python Arcade)',
+    title: 'Sakumon',
     description: 'A simple monster catching game made using Python Arcade and Tiled.',
     status: 'Ended',
-    link: '#'
+    link: '#',
+    tech:["python.png"]
   },
   {
     title: 'Ignatius WEB APP',
@@ -388,7 +393,7 @@ const Home = () => {
       </section>
       <footer>
         <div className="footer-content">
-          <p>&copy; {new Date().getFullYear()} Pedro Christian Tampubolon | All rights reserved. &copy; {new Date().getFullYear()} Skydome</p>
+          <p>&copy; {new Date().getFullYear()} Pedro Christian Tampubolon | All rights reserved. &copy; {new Date().getFullYear()} Skydome | All rights reserved.</p>
         </div>
       </footer>
     </div>
